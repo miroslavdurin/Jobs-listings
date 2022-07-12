@@ -1,0 +1,53 @@
+.job {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.2rem 4rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(91, 164, 164, 0.3) 0px 7px 29px 0px;
+    height: 15.2rem;
+}
+
+.job--left {
+    display: flex;
+    flex-direction: row;
+    gap: 2.4rem;
+    align-items: center;
+}
+
+.job--right .btn-filter:not(:last-child){
+    margin-right: 1.6rem;
+}
+
+.job__logo {
+
+}
+
+.job__info {
+    text-align: left;
+}
+
+.job__company {
+    margin-bottom: 1.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.job__company .heading--h3 {
+    margin-right: 1.5rem;
+}
+
+.job__company .span--new {
+    margin-right: 0.8rem;
+}
+
+.job__position {
+    margin-bottom: 0.7rem;
+}
+
+.job__aditional-info .span{
+    margin-right: 1.85rem;
+}

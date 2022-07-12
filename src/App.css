@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: var(--color-light-cyan-background);
+  min-height: 100vh;
+  padding-bottom: 12rem;
 }
 
 .App-header {
@@ -14,4 +17,75 @@
 .container {
   max-width: 111rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.heading--h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+  color: var(--color-very-dark-cyan);
+}
+
+.heading--h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.7rem;
+  color: var(--color-primary);
+}
+
+.span {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.138462px;
+  color: var(--color-dark-cyan);
+}
+
+.btn-filter {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: -0.123077px;
+  color: var(--color-primary);
+  border: none;
+  outline: none;
+  background-color: var(--color-light-cyan-background);
+  border-radius: 5px;
+  padding: 0.5rem 1rem 0.3rem;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+.span--new {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  letter-spacing: -0.107692px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: var(--color-primary);
+  padding: 7px 8px 3px;
+  border-radius: 50rem;
+}
+
+.span--featured {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  letter-spacing: -0.107692px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: var(--color-very-dark-cyan);
+  padding: 7px 8px 3px;
+  border-radius: 50rem;
 }
