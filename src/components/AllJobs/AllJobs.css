@@ -1,0 +1,63 @@
+.filters-container {
+    position: absolute;
+    top: -11.2rem;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    gap: 1.6rem;
+    padding: 2rem 4rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.btn-remove-filter {
+    font-family: var(--font-main);
+    color: var(--color-primary);
+    background-color: var(--color-light-cyan-background);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden; 
+    max-height: 3.2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    letter-spacing: -0.123077px;
+}
+
+.btn-remove-filter span{
+    display: inline-block;
+    padding: 5px 11px 3px 8px;
+}
+
+.remove-icon {
+    cursor: pointer;
+    background-color: var(--color-primary);   
+    width: 3.2rem;
+    height: 3.2rem;    
+    transition: all .3s ease;
+}
+
+.remove-icon:hover {
+    background-color: var(--color-very-dark-cyan);   
+}
+
+.remove-icon path {   
+    fill: #fff;
+    transform: translate(29%, 29%);
+}
+
+@media only screen and (max-width: 800px) {
+    .filters-container {
+        flex-wrap: wrap;/* 
+        position: unset; *//* 
+        transform: translateY(-11.5rem); */
+    }
+}
+/* 
+.remove-icon use {
+    fill: blue;
+    background-color: var(--color-primary);
+} */

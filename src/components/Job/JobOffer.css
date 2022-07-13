@@ -1,13 +1,15 @@
 .job {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 3.2rem 4rem;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: rgba(91, 164, 164, 0.3) 0px 7px 29px 0px;
-    height: 15.2rem;
+    box-shadow: var(--shadow);
+    max-height: 15.2rem;
+    gap: 8rem;
 }
 
 .job--left {
@@ -21,12 +23,12 @@
     margin-right: 1.6rem;
 }
 
-.job__logo {
-
-}
-
 .job__info {
     text-align: left;
+}
+
+.job-logo img {
+    display: block;
 }
 
 .job__company {
@@ -49,5 +51,64 @@
 }
 
 .job__aditional-info .span{
-    margin-right: 1.85rem;
+    margin-right: 1.6rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .job {
+        max-height: 16.5rem;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .job {
+        padding-right: 2rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .job {
+        max-height: none;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        gap: 0;
+        padding-right: 4rem;
+    }
+
+    .job--left {
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 1px solid var(--color-border);
+        width: 100%;
+    }
+
+    .job--left .job__logo {
+        position: absolute;
+        max-width: 4.8rem;
+        top: -10%;
+    }
+
+    .job--left .job__logo img {
+        width: 100%;
+    }
+
+    .job--right {
+        text-align: start;
+        margin-top: 1.5rem;
+    }
+
+    .job__company .heading--h3 {
+        margin-right: 3rem;
+    }
+
+    .job__aditional-info {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .job__company {
+        flex-wrap: wrap;
+    }
 }

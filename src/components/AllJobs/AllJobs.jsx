@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './AllJobs.css';
 import JobOffer from '../Job/JobOffer';
-import iconRemove from '../../images/icon-remove.svg';
 
 function AllJobs({allJobs}) {
     const [filters, setFilters] = useState([]);
@@ -39,9 +38,9 @@ function AllJobs({allJobs}) {
     }
 
     function handleRemoveFilters(e) {
-        if(!e.target.classList.contains("remove-icon")) return;
+        if(!e.target.closest(".remove-icon")) return;
 
-        const removedFilter = e.target.closest(".filter-btn").dataset.filter;
+        const removedFilter = e.target.closest(".btn-remove-filter").dataset.filter;
 
         const newFilters = filters.filter(f=> f.toLowerCase() !== removedFilter.toLowerCase());
 
@@ -52,14 +51,16 @@ function AllJobs({allJobs}) {
 
     return (
         <div className='container' key={filters}>
-            <div className="filters-container" onClick={handleRemoveFilters}>
-                {filters.length > 0 &&
-                    filters.map(filter=> <button key={filter + " filter"} data-filter={filter} className='filter-btn'>
-                        <span>{filter}</span>
-                        <img className="remove-icon" src={iconRemove} alt={ `remove ${filter} filter` } />
-                    </button> )
-                }
-            </div>
+            {filters.length > 0 &&
+                <div className="filters-container" onClick={handleRemoveFilters}>   
+                    { filters.map(filter=> 
+                        <button key={filter + " filter"} data-filter={filter} className='btn-remove-filter'>
+                            <span>{filter}</span>
+                            <svg className="remove-icon" id="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path fill-rule="evenodd" d="M11.314 0l2.121 2.121-4.596 4.596 4.596 4.597-2.121 2.121-4.597-4.596-4.596 4.596L0 11.314l4.596-4.597L0 2.121 2.121 0l4.596 4.596L11.314 0z"/></svg>
+                        </button> 
+                    )}           
+                </div>
+            }
             {                
                 jobs.map(job=><JobOffer key={job.company} handleAddFilters={handleAddFilters} job={job} />)
             }       

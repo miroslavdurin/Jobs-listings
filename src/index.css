@@ -7,9 +7,13 @@
   --color-light-cyan-tablet: hsl(180, 31%, 95%);
   --color-dark-cyan: #7b8e8e;
   --color-very-dark-cyan: #2c3a3a;
+  --color-border: #b7c4c4;
 
   /* FONTS */
   --font-main: 'League Spartan', sans-serif;  
+
+  /* OTHER */
+  --shadow: rgba(91, 164, 164, 0.3) 0px 7px 29px 0px; 
 }
 
 *,
