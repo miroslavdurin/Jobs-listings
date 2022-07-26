@@ -1,6 +1,4 @@
-.filters-container {/* 
-    position: absolute;
-    top: -11.2rem; */
+.filters-container {
     width: 100%;
     background-color: #fff;
     display: flex;

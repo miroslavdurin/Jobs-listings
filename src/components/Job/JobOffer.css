@@ -73,7 +73,7 @@
         align-items: flex-start;
         position: relative;
         gap: 0;
-        padding-right: 4rem;
+        padding: 3.2rem 2.4rem 0.8rem;
     }
 
     .job--left {
@@ -110,5 +110,10 @@
 
     .job__company {
         flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+
+    .job--right .btn-filter {
+        margin-bottom: 1.6rem;
     }
 }
