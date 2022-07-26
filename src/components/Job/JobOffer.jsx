@@ -1,8 +1,7 @@
 import React from 'react';
 import './JobOffer.css';
-import { AnimatePresence, motion } from 'framer-motion';
 
-function JobOffer({job, handleAddFilters, isJobsUpdated}) {
+function JobOffer({job, handleAddFilters,}) {
     const {company, contract, featured, languages, level, location, logo, position, postedAt, role, tools} = job;
     const isNew = job.new;
 
@@ -11,32 +10,23 @@ function JobOffer({job, handleAddFilters, isJobsUpdated}) {
         handleAddFilters(e.target.closest('.btn-filter').dataset.filter)
     }
 
-
     return (
-            <motion.div className="job"
-                /* key= "company"
-                id= {company}
-                initial={isJobsUpdated && {opacity: 0}}
-                animate={isJobsUpdated && {opacity: 1}}
-                exit={isJobsUpdated && {opacity: 0}} 
-                transition={{
-                    duration: 1
-                }} */
-            >
+            <div className="job">
+                {featured && <div className="side-line" />}
                 <div className="job--left">
-                    <div className="job__logo">
+                    <div className="job-logo">
                         <img src={logo} alt={company} />
                     </div>
-                    <div className="job__info">
-                        <div className="job__company">
+                    <div className="job-info">
+                        <div className="job-company">
                             <h3 className="heading--h3">{company}</h3>
                             {isNew && <span className="span--new">New!</span> }
                             {featured && <span className="span--featured">Featured</span> }
                         </div>
-                        <div className="job__position">
+                        <div className="job-position">
                             <h2 className="heading--h2">{position}</h2>                        
                         </div>
-                        <div className="job__aditional-info">
+                        <div className="job-aditional-info">
                             <span className="span">{postedAt}</span>
                             <span className="span">&bull;</span>
                             <span className="span">{contract}</span>
@@ -51,7 +41,7 @@ function JobOffer({job, handleAddFilters, isJobsUpdated}) {
                     {languages.map(language => <button key={language + " company"} className="btn-filter" data-filter={language}>{language}</button>)}
                     {tools.length > 0 && tools.map(tool=><button key={tool + " company"} className="btn-filter" data-filter={tool}>{tool}</button>)}
                 </div>
-            </motion.div>        
+            </div>        
     )
 }
 

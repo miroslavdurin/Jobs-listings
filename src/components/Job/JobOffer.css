@@ -10,6 +10,17 @@
     box-shadow: var(--shadow);
     max-height: 15.2rem;
     gap: 8rem;
+    position: relative;
+}
+
+.side-line {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--color-primary);
+    border-radius: 5px 0 0 5px;
 }
 
 .job--left {
@@ -23,7 +34,7 @@
     margin-right: 1.6rem;
 }
 
-.job__info {
+.job-info {
     text-align: left;
 }
 
@@ -31,26 +42,26 @@
     display: block;
 }
 
-.job__company {
+.job-company {
     margin-bottom: 1.3rem;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.job__company .heading--h3 {
+.job-company .heading--h3 {
     margin-right: 1.5rem;
 }
 
-.job__company .span--new {
+.job-company .span--new {
     margin-right: 0.8rem;
 }
 
-.job__position {
+.job-position {
     margin-bottom: 0.7rem;
 }
 
-.job__aditional-info .span{
+.job-aditional-info .span{
     margin-right: 1.6rem;
 }
 
@@ -63,6 +74,10 @@
 @media only screen and (max-width: 1050px) {
     .job {
         padding-right: 2rem;
+    }
+
+    .job--right .btn-filter {
+        margin-bottom: 1.6rem;
     }
 }
 
@@ -83,13 +98,13 @@
         width: 100%;
     }
 
-    .job--left .job__logo {
+    .job--left .job-logo {
         position: absolute;
         max-width: 4.8rem;
         top: -10%;
     }
 
-    .job--left .job__logo img {
+    .job--left .job-logo img {
         width: 100%;
     }
 
@@ -98,22 +113,20 @@
         margin-top: 1.5rem;
     }
 
-    .job__company .heading--h3 {
+    .job-company .heading--h3 {
         margin-right: 3rem;
     }
 
-    .job__aditional-info {
+    .job-aditional-info {
         margin-bottom: 1.5rem;
         display: flex;
         flex-wrap: wrap;
     }
 
-    .job__company {
+    .job-company {
         flex-wrap: wrap;
         margin-bottom: 1rem;
     }
 
-    .job--right .btn-filter {
-        margin-bottom: 1.6rem;
-    }
+    
 }

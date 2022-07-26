@@ -17,9 +17,6 @@
 .container {
   max-width: 111rem;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
   position: relative;
 }
 
@@ -95,6 +92,15 @@
   background-color: var(--color-very-dark-cyan);
   padding: 7px 8px 3px;
   border-radius: 50rem;
+}
+
+.sr-only {
+  position: absolute ;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 1200px) {
