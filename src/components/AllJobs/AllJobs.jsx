@@ -1,15 +1,60 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import './AllJobs.css';
 import JobOffer from '../Job/JobOffer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function AllJobs({allJobs}) {
+    const [filters, setFilters] = useState([]);    
+    const [animationFinished, setAnimationFinished] = useState(false);
+    /* ... */
+
+    // Logic with using derived state
+    let showFiltersContainer;
+    let jobs;
+
+    // prevLength and isJobsUpdated are used to check if there is change in jobs array
+    // if isJobsUpdated = true, it prevents animation
+    let isJobsUpdated = true;
+    const prevLength = useRef(10);
+
+    if (filters.length === 0) {
+        showFiltersContainer = false;
+        jobs = allJobs;
+    } else {
+        showFiltersContainer = true;
+
+        let newJobs = [...allJobs];
+        filters.forEach((filter) => {
+        const filterJobs = newJobs.filter(
+            (job) =>
+            job.role === filter ||
+            job.level === filter ||
+            job.languages.find((language) => language === filter) ||
+            (job.tools.length > 0 && job.tools.find((tool) => tool === filter))
+        );
+
+            newJobs = [...filterJobs];
+        });
+        jobs = newJobs;
+
+        //Checking if updated jobs array is the same as previous one, to prevent animation
+        if(prevLength.current === jobs.length) isJobsUpdated = false;
+        else isJobsUpdated = true;
+    }
+
+
+    /* 
+    
+    // Logic without using a derived state
+    
     const [filters, setFilters] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [prevJobs, setPrevJobs] = useState([]);
     const [isJobsUpdated, setIsJobsUpdated] = useState(true);
     const [showFiltersContainer, setShowFiltersContainer] = useState(false);
     const [animationFinished, setAnimationFinished] = useState(false);
+
+    console.log('render', filters.length)
 
     useEffect(()=>{
         
@@ -23,8 +68,7 @@ function AllJobs({allJobs}) {
 
         if(filters.length > 0) setShowFiltersContainer(true);
 
-        /* Declaring and using new variables is necessary because useState doesn't always update synchronously and there
-        was a bug when some filters were removed */
+       
 
         let newJobs = [...allJobs];
         filters.forEach(filter=>{
@@ -45,13 +89,14 @@ function AllJobs({allJobs}) {
         if(prevJobs.length === newJobs.length) setIsJobsUpdated(false);
         else setIsJobsUpdated(true);
 
-    },[filters])
+    },[filters]) */
 
     function handleAddFilters(filter) {
         if(filters.some(f=>f===filter)) return;        
 
-        setPrevJobs([...jobs]); 
-        setFilters((state)=> state = [...filters, filter]);              
+        //Saving previous jobs.length before updating jobs
+        prevLength.current = jobs.length; 
+        setFilters([...filters, filter]);              
     }
 
     function handleRemoveFilters(e) {
@@ -60,15 +105,18 @@ function AllJobs({allJobs}) {
         const removedFilter = e.target.closest(".btn-remove-filter").dataset.filter;
 
         const newFilters = filters.filter(f=> f.toLowerCase() !== removedFilter.toLowerCase());
-        
-        setPrevJobs([...jobs]); 
+       
+        //Saving previous jobs.length before updating jobs
+        prevLength.current = jobs.length;
         setFilters([...newFilters]);
     }
 
     function handleClearAllFilters() {
         setFilters([]);
-        setPrevJobs([...jobs]); 
-        setIsJobsUpdated(true);
+
+        //Saving previous jobs.length before updating jobs
+        prevLength.current = jobs.length; 
+        isJobsUpdated = true;
     }
 
     return (        
@@ -98,7 +146,7 @@ function AllJobs({allJobs}) {
                     }                
                 </AnimatePresence>     
                     <motion.div className={`jobs-container ${showFiltersContainer && 'translate'}`}
-                        key={isJobsUpdated}           
+                                   
                         initial={isJobsUpdated && {opacity: 0}}
                         animate={isJobsUpdated && {opacity: 1}}
                         transition={{
